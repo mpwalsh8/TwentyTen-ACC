@@ -1,7 +1,7 @@
-twentyten-acme
+TwentyTen-ACC
 ==============
 
-TwentyTen ACME WordPress Theme - a responsive TwentyTen child theme.
+TwentyTen ACC (Apex Cougar Club) WordPress Theme - a responsive TwentyTen child theme.
 
 This will be the base theme for a series of TwentyTen child themes that
 will share common functionality.
