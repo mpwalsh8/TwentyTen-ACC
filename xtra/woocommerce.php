@@ -1,14 +1,14 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /**
- * TwentyTen-ACME WooCommerce
+ * TwentyTen-ACC WooCommerce
  *
  * $Id$
  *
  * (c) 2013 by Mike Walsh
  *
  * @author Mike Walsh <mpwalsh8@gmail.com>
- * @package TwentyTen-ACME
+ * @package TwentyTen-ACC
  * @subpackage WooCommerce
  * @version $Revision$
  * @lastmodified $Date$
@@ -18,15 +18,15 @@
  */
 
 //  Set number of columns for related products
-add_filter ( 'woocommerce_product_thumbnails_columns', 'acme_thumb_cols' );
-function acme_thumb_cols()
+add_filter ( 'woocommerce_product_thumbnails_columns', 'acc_thumb_cols' );
+function acc_thumb_cols()
 {
     return 4;
 }
 
 //  Set number of columns for products on shop page
-add_filter ( 'loop_shop_columns', 'acme_loop_shop_columns' );
-function acme_loop_shop_columns()
+add_filter ( 'loop_shop_columns', 'acc_loop_shop_columns' );
+function acc_loop_shop_columns()
 {
     return 3;
 }
