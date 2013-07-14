@@ -57,7 +57,7 @@ function twentyten_setup() {
 	$custom_header_support = array(
 		// The default image to use.
 		// The %s is a placeholder for the theme template directory URI.
-		'default-image' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACC_Logo_v1.png',
+		'default-image' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v4.png',
 		// The height and width of our custom header.
 		'width' => apply_filters( 'twentyten_header_image_width', 940 ),
 		'height' => apply_filters( 'twentyten_header_image_height', 198 ),
@@ -91,11 +91,29 @@ function twentyten_setup() {
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
-  		'std' => array(
-			'url' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACC_Logo_v1.png',
-			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACC_Logo_v1-thumbnail.png',
+		'v1' => array(
+			'url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v1.png',
+			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v1-thumbnail.png',
 			/* translators: header image description */
-			'description' => __( 'TwentyTen-ACC', 'twentyten' )
+			'description' => __( 'Apex Cougar Club v1', 'twentyten' )
+		),
+		'v2' => array(
+			'url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v2.png',
+			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v2-thumbnail.png',
+			/* translators: header image description */
+			'description' => __( 'Apex Cougar Club v2', 'twentyten' )
+        ),
+  		'v3' => array(
+			'url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v3.png',
+			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v3-thumbnail.png',
+			/* translators: header image description */
+			'description' => __( 'Apex Cougar Club v3', 'twentyten' )
+        ),
+  		'v4' => array(
+			'url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v4.png',
+			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/ApexCougarClubBanner_v4-thumbnail.png',
+			/* translators: header image description */
+			'description' => __( 'Apex Cougar Club v4', 'twentyten' )
 		)
 	) );
 }
