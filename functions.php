@@ -1,8 +1,8 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
-define('ACME_MAJOR_RELEASE', '0');
-define('ACME_MINOR_RELEASE', '1');
+define('ACC_MAJOR_RELEASE', '0');
+define('ACC_MINOR_RELEASE', '1');
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -57,7 +57,7 @@ function twentyten_setup() {
 	$custom_header_support = array(
 		// The default image to use.
 		// The %s is a placeholder for the theme template directory URI.
-		'default-image' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACME_Logo_v1.png',
+		'default-image' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACC_Logo_v1.png',
 		// The height and width of our custom header.
 		'width' => apply_filters( 'twentyten_header_image_width', 940 ),
 		'height' => apply_filters( 'twentyten_header_image_height', 198 ),
@@ -92,10 +92,10 @@ function twentyten_setup() {
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
   		'std' => array(
-			'url' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACME_Logo_v1.png',
-			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACME_Logo_v1-thumbnail.png',
+			'url' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACC_Logo_v1.png',
+			'thumbnail_url' => get_bloginfo('stylesheet_directory') . '/images/TwentyTen-ACC_Logo_v1-thumbnail.png',
 			/* translators: header image description */
-			'description' => __( 'TwentyTen-ACME', 'twentyten' )
+			'description' => __( 'TwentyTen-ACC', 'twentyten' )
 		)
 	) );
 }
@@ -124,30 +124,30 @@ function twentyten_admin_header_style() {
 }
 
 /**
- * acme_wp_head()
+ * acc_wp_head()
  *
  */
-function acme_wp_head() {
+function acc_wp_head() {
     printf('<meta name="viewport" content="width=device-width" />%s', PHP_EOL) ;
 	printf('<link rel="shortcut icon" href="%s/images/favicon.ico" >%s', get_stylesheet_directory_uri(), PHP_EOL) ;
 
-    //  TwentyTen-ACME needs jQuery!
+    //  TwentyTen-ACC needs jQuery!
     wp_enqueue_script('jquery') ;
     
     //  Load Chosen jQuery plugin to handle dropdown menus on mobile devices
 
-    wp_register_script( 'acme-chosen',
+    wp_register_script( 'acc-chosen',
         sprintf('%s/js/chosen/chosen.jquery.min.js', get_stylesheet_directory_uri()), array('jquery'));
 
-    wp_enqueue_script('acme-chosen') ;
+    wp_enqueue_script('acc-chosen') ;
 
-    wp_enqueue_style('acme-chosen-css',
+    wp_enqueue_style('acc-chosen-css',
         sprintf('%s/js/chosen/chosen.css', get_stylesheet_directory_uri())) ;
 }
-add_action('wp_head', 'acme_wp_head');
+add_action('wp_head', 'acc_wp_head');
 
 /**
- * twentyten_acme_wp_footer()
+ * twentyten_acc_wp_footer()
  *
  * By default TwentyTen doesn't have an easy way to add the mobile menu
  * block we want nor is there any obvious hooks to use.  Instead of copy
@@ -159,7 +159,7 @@ add_action('wp_head', 'acme_wp_head');
  * then make it visible.
  *
  */
-function twentyten_acme_wp_footer()
+function twentyten_acc_wp_footer()
 {
 ?>
 <div id="mobile-menus"><?php //dropdown_menu( array(
@@ -212,21 +212,21 @@ function twentyten_acme_wp_footer()
 <?php
 }
 
-add_action('wp_footer', 'twentyten_acme_wp_footer');
+add_action('wp_footer', 'twentyten_acc_wp_footer');
 
 /**
  * Action to add theme credits
  *
  */
-function acme_credits()
+function acc_credits()
 {
-    $txt = sprintf('<div id="acme-footer">Copyright &copy; 2012-%s, %s - All rights reserved.<br>',
+    $txt = sprintf('<div id="acc-footer">Copyright &copy; 2012-%s, %s - All rights reserved.<br>',
         date('Y'), get_bloginfo('name')) ;
-    $txt .= sprintf('The <a href="http://michaelwalsh.org/wordpress-themes/twentyten-acme/" title="TwentyTen-ACME">TwentyTen-ACME</a> theme (v%s.%s) is a child theme of the <a href="http://theme.wordpress.com/themes/twentyten/">Twenty Ten</a> theme.</div>', ACME_MAJOR_RELEASE, ACME_MINOR_RELEASE) ;
+    $txt .= sprintf('The <a href="http://michaelwalsh.org/wordpress-themes/twentyten-acc/" title="TwentyTen-ACC">TwentyTen-ACC</a> theme (v%s.%s) is a child theme of the <a href="http://theme.wordpress.com/themes/twentyten/">Twenty Ten</a> theme.</div>', ACC_MAJOR_RELEASE, ACC_MINOR_RELEASE) ;
 
     echo $txt ;
 }
-add_action('twentyten_credits', 'acme_credits') ;
+add_action('twentyten_credits', 'acc_credits') ;
 
 //  Load AdRotate customizations
 require_once(dirname( __FILE__ ) . '/xtra/adrotate.php');
