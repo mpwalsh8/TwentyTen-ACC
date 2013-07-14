@@ -1,86 +1,86 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 a:link, a:visited {
-    color: #21759b;
+    color: #fdb813;
 }
 
 a:active, a:hover {
-    color: #d54e21;
+    color: #003300;
 }
 
 .page-title a:link,
 .page-title a:visited {
-	color: #21759b;
+	color: #fdb813;
 }
 .page-title a:active,
 .page-title a:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .entry-title a:active,
 .entry-title a:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .page-link a:active,
 .page-link a:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .entry-meta a,
 .entry-utility a {
-	color: #21759b;
+	color: #fdb813;
 }
 .entry-meta a:hover,
 .entry-utility a:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .navigation a:link,
 .navigation a:visited {
-	color: #21759b;
+	color: #fdb813;
 }
 .navigation a:active,
 .navigation a:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .comment-meta a:link,
 .comment-meta a:visited {
-	color: #21759b;
+	color: #fdb813;
 }
 .comment-meta a:active,
 .comment-meta a:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .reply a,
 a.comment-edit-link {
-	color: #21759b;
+	color: #fdb813;
 }
 .reply a:hover,
 a.comment-edit-link:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 #respond .required {
-	color: #d54e21;
+	color: #003300;
 }
 
 .widget_rss a.rsswidget:hover {
-	color: #d54e21;
+	color: #003300;
 }
 
 .widget-title {
-    border-bottom: 3px solid #d54e21;
+    border-bottom: 3px solid #003300;
 }
 
 .entry-title {
-    border-bottom: 4px solid #d54e21;
+    border-bottom: 4px solid #003300;
 }
 
 .entry-title a:active, .entry-title a:hover {
-    color: #d54e21;
+    color: #003300;
 }
 
 /* =Responsive Structure
