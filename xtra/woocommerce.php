@@ -90,4 +90,126 @@ function acc_add_roles()
  * Initiate the action to add roles after the theme is set up
  **/
 add_action('after_setup_theme','acc_add_roles');
+
+/**
+ * Add additonal fields to the checkout process
+ *
+ */
+
+/**
+ * Define Volunteer Checkbox fields which are used in
+ * several places throughout the custom checkout process.
+ *
+ * @return mixed - array of meta fields and labels
+ */
+function acc_checkout_volunteer_checkbox_fields()
+{
+    return array(
+        array(
+            'meta' => 'acc_bod_interest',
+            'label' => __('Board of Directors', 'woocommerce'),
+            'desc' => __('(Officers, Committee Chair, etc.)', 'woocommerce'),
+        ),
+        array(
+            'meta' => 'acc_committee_interest',
+            'label' => __('Comittee Member', 'woocommerce'),
+            'desc' => __('(Member of Committee, etc.)', 'woocommerce'),
+        ),
+        array(
+            'meta' => 'acc_powder_puff',
+            'label' => __('Powder Puff Football', 'woocommerce'),
+            'desc' => __('', 'woocommerce'),
+        ),
+        array(
+            'meta' => 'acc_sports_concessions',
+            'label' => __('Sports Concessions', 'woocommerce'),
+            'desc' => __('(Work in Concession Stand)', 'woocommerce'),
+        ),
+        array(
+            'meta' => 'acc_other',
+            'label' => __('Other - Please contact me!', 'woocommerce'),
+            'desc' => __('', 'woocommerce'),
+        ),
+    ) ;
+}
+
+function acc_booster_club_custom_checkout_field( $checkout )
+{
+    echo '<div id="acc-booster-club-help-wanted">' .
+        __('<h4>The Booster Club needs your help!</h4><small>Please indicate your areas of interest</small>', 'woocommerce') ;
+ 
+    $volunteer_checkbox_fields = acc_checkout_volunteer_checkbox_fields() ;
+
+    foreach ($volunteer_checkbox_fields as $cb)
+    {
+        woocommerce_form_field( $cb['meta'], array(
+            'type'          => 'checkbox',
+            'class'         => array('input-checkbox'),
+            'label'         => sprintf('%s <i><small>%s</small></i>', $cb['label'], $cb['desc']),
+            'required'  => false,
+            ), $checkout->get_value( $cb['meta'] ));
+    }
+ 
+    echo '</div>';
+}
+ 
+/**  Add checkout field action **/
+add_action('woocommerce_after_order_notes', 'acc_booster_club_custom_checkout_field');
+
+/**
+ * Process the checkout
+ *
+ * @return void
+ */
+function acc_booster_club_custom_checkout_field_process()
+{
+    global $woocommerce;
+ 
+    // Check if set, if its not set add an error.
+    //if ('select' === $_POST['acc_student_name'])
+    //     $woocommerce->add_error( __('Please provide Student\'s name.', 'woocommerce') );
+}
+
+/**  Add checkout process action **/
+//add_action('woocommerce_checkout_process', 'acc_booster_club_custom_checkout_field_process');
+ 
+/**
+ * Update the order meta with field value
+ *
+ * @param int order id
+ * @return void
+ */
+function acc_booster_club_custom_checkout_field_update_order_meta( $order_id )
+{
+    //  Scan checkboxes for volunteer interest which is all stored in one meta field
+    $volunteer_checkbox_fields = acc_checkout_volunteer_checkbox_fields() ;
+    $volunteer_interest = array() ;
+
+    foreach ($volunteer_checkbox_fields as $cb)
+    {
+        if ($_POST[$cb['meta']])
+            $volunteer_interest[] = $cb['label'] ;
+    }
+
+    if (!empty($volunteer_interest))
+        update_post_meta( $order_id, 'Volunteer Interest', esc_attr(implode(', ', $volunteer_interest)));
+}
+
+/**  Add checkout update order meta action **/
+add_action('woocommerce_checkout_update_order_meta', 'acc_booster_club_custom_checkout_field_update_order_meta');
+
+/**
+ * Add the field to order emails
+ **/
+add_filter('woocommerce_email_order_meta_keys', 'acc_custom_checkout_field_order_meta_keys');
+ 
+/**
+ * Meta keys for order email
+ *
+ * @return mixed - array of meta keys to include in order email
+ */
+function acc_custom_checkout_field_order_meta_keys( $keys ) {
+	$keys[] = 'Volunteer Interest';
+	return $keys;
+}
 ?>
