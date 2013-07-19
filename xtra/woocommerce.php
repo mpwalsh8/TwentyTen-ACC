@@ -71,7 +71,8 @@ function acme_add_roles()
 
     //  Sort the data by keys so the array can be compared
 
-    ksort($role->capabilities) ;
+    if (is_array($role->capabilities))
+        ksort($role->capabilities) ;
     ksort($acme_wc_fulfillment_role->capabilities) ;
 
     //  If what is stored doesn't match what the default is, delete it and add it again
