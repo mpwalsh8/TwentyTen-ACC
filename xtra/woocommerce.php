@@ -71,7 +71,7 @@ function acc_add_roles()
 
     //  Sort the data by keys so the array can be compared
 
-    if (is_array($role->capabilities))
+    if (!is_null($role) && is_array($role->capabilities))
         ksort($role->capabilities) ;
     ksort($acc_wc_fulfillment_role->capabilities) ;
 
