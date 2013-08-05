@@ -55,14 +55,19 @@ select.menu.dropdown-menu {
 /* =Responsive Structure
 ----------------------------------------------- */
 
+/*
 @media (max-width: 1023px) {
+*/
+@media (max-width: 650px) {
     #mobile-menus {
         display: block;
     }
 }
 
+/*
 @media (max-width: 650px) {
 }
+*/
 
 @media (max-width: 450px) {
 }

@@ -149,7 +149,19 @@ function acc_wp_head() {
     printf('<meta name="viewport" content="width=device-width" />%s', PHP_EOL) ;
 	printf('<link rel="shortcut icon" href="%s/images/favicon.ico" >%s', get_stylesheet_directory_uri(), PHP_EOL) ;
 
-    //  TwentyTen-ACC needs jQuery!
+    /**
+     * Add support for mobile menus by incorporating
+     * the Dropdown-Menus plugin as part of the theme.
+     *
+     * @see http://wordpress.org/plugins/dropdown-menus/
+     */
+
+    if (!is_admin()) {
+        if ( ! function_exists( 'dropdown_menu' ) )
+            include( 'dropdown-menus/dropdown-menus.php' );
+    }
+    
+    //  TwentyTen-ACME needs jQuery!
     wp_enqueue_script('jquery') ;
     
     //  Load Chosen jQuery plugin to handle dropdown menus on mobile devices
@@ -180,12 +192,12 @@ add_action('wp_head', 'acc_wp_head');
 function twentyten_acc_wp_footer()
 {
 ?>
-<div id="mobile-menus"><?php //dropdown_menu( array(
-		//'theme_location' => 'primary',
-    	//'dropdown_title' => '-- Main Menu --',
-    	//'indent_string' => '- ',
-    	//'indent_after' => ''
-	//) ); ?></div>
+<div id="mobile-menus"><?php dropdown_menu( array(
+		'theme_location' => 'primary',
+    	'dropdown_title' => '&mdash;&mdash; ' . __('Main Menu', 'twentyten') . ' &mdash;&mdash;',
+    	'indent_string' => '&mdash; ',
+    	'indent_after' => ''
+	) ); ?></div>
 
 <!--  Move the DIV to its proper location -->
 <script type="text/javascript">
@@ -193,9 +205,10 @@ function twentyten_acc_wp_footer()
         $('#mobile-menus').appendTo($('#masthead'));
 
         // Create the dropdown base
-        $("<select />").appendTo("#mobile-menus");
+        //$("<select />").appendTo("#mobile-menus");
         //$("#masthead select").attr("id", "mobile-menus");
         $("#mobile-menus select").addClass("chzn-select");
+        /*
         $("#mobile-menus select").attr("data-placeholder", "Go to ...");
 
         // Create default option "Go to..."
@@ -213,12 +226,13 @@ function twentyten_acc_wp_footer()
             "text"    : el.text()
             }).appendTo("#mobile-menus select");
         });
+         */
 
         // To make dropdown actually work
         // To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
-        $("#mobile-menus select").change(function() {
-            window.location = $(this).find("option:selected").val();
-        });
+        //$("#mobile-menus select").change(function() {
+        //    window.location = $(this).find("option:selected").val();
+        //});
         $(".chzn-select").chosen({
             disable_search: true,
             width: "100%"
@@ -231,6 +245,14 @@ function twentyten_acc_wp_footer()
 }
 
 add_action('wp_footer', 'twentyten_acc_wp_footer');
+
+//add_filter( 'dropdown_blank_item_text', 'dropdown_menu_use_menu_title', 10, 2 );
+function dropdown_menu_use_menu_title( $title, $args ) {
+	return '&mdash;mdash; ' . $args->menu->name . ' &mdash&mdash;';
+}
+
+//  Force the menu to return to the default
+add_filter( 'dropdown_menus_select_current', '__return_false' );
 
 /**
  * Action to add theme credits

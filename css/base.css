@@ -145,7 +145,10 @@ a.comment-edit-link:hover {
 /* =Responsive Structure
 ----------------------------------------------- */
 
+/*
 @media (max-width: 1023px) {
+*/
+@media (max-width: 650px) {
     #site-title {
         font-size: 24px;
     }
@@ -190,8 +193,10 @@ a.comment-edit-link:hover {
     }
 }
 
+/*
 @media (max-width: 650px) {
 }
+*/
 
 @media (max-width: 450px) {
 }
