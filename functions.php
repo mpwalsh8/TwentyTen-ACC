@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 define('ACC_MAJOR_RELEASE', '0');
-define('ACC_MINOR_RELEASE', '2');
+define('ACC_MINOR_RELEASE', '3');
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
